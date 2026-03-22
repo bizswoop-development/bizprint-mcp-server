@@ -1,6 +1,6 @@
 # BizPrint MCP Server
 
-An MCP (Model Context Protocol) server that connects AI assistants to the [BizPrint](https://www.bizswoop.app/) Cloud Print API. Send print jobs, manage printers and stations, and monitor print job status — all through natural language.
+An MCP (Model Context Protocol) server that connects AI assistants to the [BizPrint](https://www.getbizprint.com/) Cloud Print API. Send print jobs, manage printers and stations, and monitor print job status — all through natural language.
 
 ## Tools
 
