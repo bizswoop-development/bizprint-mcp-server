@@ -1,0 +1,42 @@
+{
+  "name": "@bizswoop/bizprint-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for the BizPrint Cloud Print API",
+  "type": "module",
+  "bin": {
+    "bizprint-mcp-server": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && node build/shebang.cjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "bizprint",
+    "printing",
+    "cloud-print",
+    "model-context-protocol"
+  ],
+  "author": "BizSwoop",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BizSwoop/bizprint-mcp-server.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.1.0"
+  }
+}
