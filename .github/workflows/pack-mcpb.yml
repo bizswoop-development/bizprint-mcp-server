@@ -1,0 +1,22 @@
+name: Pack MCPB
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npm run build
+      - run: npm prune --omit=dev
+      - run: npx @anthropic-ai/mcpb pack
+      - name: Upload MCPB to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "*.mcpb"

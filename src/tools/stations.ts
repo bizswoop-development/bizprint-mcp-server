@@ -24,7 +24,7 @@ export async function getStation(
 
 export function formatStation(s: Station): string {
   const lines = [
-    `Station: ${s.title} (ID: ${s.id}) — ${s.status}`,
+    `Station: ${s.title} (ID: ${s.id}) -${s.status}`,
     `  Domain: ${s.domain} | Version: ${s.version}`,
     `  Printers: ${s.printers.length > 0 ? s.printers.join(", ") : "none"}`,
   ];
@@ -36,14 +36,14 @@ export function formatStationList(result: ApiListResponse<Station>): string {
     return "No stations found.";
   }
   const lines = result.data.map((s) =>
-    `• ${s.title} (ID: ${s.id}) — ${s.status}, ${s.printers.length} printer(s)`,
+    `• ${s.title} (ID: ${s.id}) -${s.status}, ${s.printers.length} printer(s)`,
   );
   const { pagination } = result;
   if (pagination.totalAll > 0) {
     lines.push(`\n${result.data.length} of ${pagination.totalAll} stations shown.`);
   }
   if (pagination.hasMore) {
-    lines.push("More results available — use page parameter to see next page.");
+    lines.push("More results available - use page parameter to see next page.");
   }
   return lines.join("\n");
 }

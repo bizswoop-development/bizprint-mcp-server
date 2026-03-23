@@ -65,14 +65,14 @@ export function formatJobList(result: ApiListResponse<Job>): string {
     return "No print jobs found.";
   }
   const lines = result.data.map((j) =>
-    `• Job ${j.id}: ${j.status.toUpperCase()} — Printer ${j.printerId}, "${j.description}"`,
+    `• Job ${j.id}: ${j.status.toUpperCase()} -Printer ${j.printerId}, "${j.description}"`,
   );
   const { pagination } = result;
   if (pagination.totalAll > 0) {
     lines.push(`\n${result.data.length} of ${pagination.totalAll} jobs shown.`);
   }
   if (pagination.hasMore) {
-    lines.push("More results available — use page parameter to see next page.");
+    lines.push("More results available - use page parameter to see next page.");
   }
   return lines.join("\n");
 }

@@ -1,0 +1,89 @@
+{
+  "manifest_version": "0.3",
+  "name": "bizprint",
+  "display_name": "BizPrint Cloud Printing",
+  "version": "1.0.0",
+  "description": "Connect Claude to BizPrint Cloud Print API. Send print jobs, manage printers and stations, and monitor print job status through natural language.",
+  "author": {
+    "name": "BizSwoop",
+    "email": "support@bizswoop.com",
+    "url": "https://www.getbizprint.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bizswoop-development/bizprint-mcp-server"
+  },
+  "homepage": "https://www.getbizprint.com",
+  "documentation": "https://github.com/bizswoop-development/bizprint-mcp-server#readme",
+  "support": "https://github.com/bizswoop-development/bizprint-mcp-server/issues",
+  "license": "MIT",
+  "icon": "icon.png",
+  "privacy_policies": [
+    "https://getbizprint.com/privacy-policy/"
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "BIZPRINT_PUBLIC_KEY": "${user_config.bizprint_public_key}",
+        "BIZPRINT_SECRET_KEY": "${user_config.bizprint_secret_key}"
+      }
+    }
+  },
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  },
+  "tools": [
+    {
+      "name": "list_printers",
+      "description": "List all configured printers with their settings"
+    },
+    {
+      "name": "get_printer",
+      "description": "Get details for a specific printer by ID"
+    },
+    {
+      "name": "list_stations",
+      "description": "List all print stations and their status"
+    },
+    {
+      "name": "get_station",
+      "description": "Get details for a specific station by ID"
+    },
+    {
+      "name": "create_print_job",
+      "description": "Send a document URL to a printer"
+    },
+    {
+      "name": "get_print_job",
+      "description": "Check the status of a print job"
+    },
+    {
+      "name": "list_print_jobs",
+      "description": "List all print jobs with pagination"
+    }
+  ],
+  "user_config": {
+    "bizprint_public_key": {
+      "type": "string",
+      "title": "BizPrint API Public Key",
+      "description": "Your BizPrint API public key from print.bizswoop.app/applications",
+      "required": true,
+      "sensitive": false
+    },
+    "bizprint_secret_key": {
+      "type": "string",
+      "title": "BizPrint API Secret Key",
+      "description": "Your BizPrint API secret key from print.bizswoop.app/applications",
+      "required": true,
+      "sensitive": true
+    }
+  }
+}

@@ -43,7 +43,7 @@ export async function getPrinter(
 export function formatPrinter(p: Printer): string {
   const status = p.enabled ? "Enabled" : "Disabled";
   const lines = [
-    `Printer: ${p.title} (ID: ${p.id}) — ${status}`,
+    `Printer: ${p.title} (ID: ${p.id}) -${status}`,
     `  Station: ${p.station} | Copies: ${p.copies} | Paper: ${p.paperSize}`,
     `  Color: ${p.color ? "Yes" : "No"} | Duplex: ${p.duplex} | Orientation: ${p.orientation}`,
   ];
@@ -56,7 +56,7 @@ export function formatPrinterList(result: ApiListResponse<Printer>): string {
   }
   const lines = result.data.map((p) => {
     const status = p.enabled ? "Enabled" : "Disabled";
-    return `• ${p.title} (ID: ${p.id}) — ${status}, Station ${p.station}, ${p.paperSize}, ${p.color ? "Color" : "B&W"}`;
+    return `• ${p.title} (ID: ${p.id}) -${status}, Station ${p.station}, ${p.paperSize}, ${p.color ? "Color" : "B&W"}`;
   });
   const { pagination } = result;
   if (pagination.totalAll > 0) {
@@ -65,7 +65,7 @@ export function formatPrinterList(result: ApiListResponse<Printer>): string {
     );
   }
   if (pagination.hasMore) {
-    lines.push("More results available — use page parameter to see next page.");
+    lines.push("More results available - use page parameter to see next page.");
   }
   return lines.join("\n");
 }

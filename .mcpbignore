@@ -1,0 +1,11 @@
+src/
+build/
+.git/
+.github/
+.gitignore
+.mcpbignore
+tsconfig.json
+vitest.config.ts
+package-lock.json
+*.ts
+*.map

@@ -73,6 +73,11 @@ const TOOLS = [
     name: "list_printers",
     description:
       "List all printers configured in BizPrint. Returns printer details including id, title, enabled status, station assignment, and print settings.",
+    annotations: {
+      title: "List Printers",
+      readOnlyHint: true,
+      destructiveHint: false,
+    },
     inputSchema: {
       type: "object" as const,
       properties: { ...paginationSchema },
@@ -82,6 +87,11 @@ const TOOLS = [
     name: "get_printer",
     description:
       "Get details for a specific printer by ID. Returns printer configuration including title, enabled status, station, copies, paper size, color, duplex, and orientation settings.",
+    annotations: {
+      title: "Get Printer",
+      readOnlyHint: true,
+      destructiveHint: false,
+    },
     inputSchema: {
       type: "object" as const,
       properties: {
@@ -98,6 +108,11 @@ const TOOLS = [
     name: "list_stations",
     description:
       "List all print stations configured in BizPrint. Returns station details including id, title, status, version, domain, and assigned printers.",
+    annotations: {
+      title: "List Stations",
+      readOnlyHint: true,
+      destructiveHint: false,
+    },
     inputSchema: {
       type: "object" as const,
       properties: { ...paginationSchema },
@@ -107,6 +122,11 @@ const TOOLS = [
     name: "get_station",
     description:
       "Get details for a specific print station by ID. Returns station configuration including title, status, version, domain, and assigned printers.",
+    annotations: {
+      title: "Get Station",
+      readOnlyHint: true,
+      destructiveHint: false,
+    },
     inputSchema: {
       type: "object" as const,
       properties: {
@@ -123,6 +143,11 @@ const TOOLS = [
     name: "create_print_job",
     description:
       "Create a new print job in BizPrint. Sends a document URL to a specific printer for printing. Returns the created job details including id and status.",
+    annotations: {
+      title: "Create Print Job",
+      readOnlyHint: false,
+      destructiveHint: true,
+    },
     inputSchema: {
       type: "object" as const,
       properties: {
@@ -153,6 +178,11 @@ const TOOLS = [
     name: "get_print_job",
     description:
       "Get details for a specific print job by ID. Returns job information including printer, URL, description, status, and creation time.",
+    annotations: {
+      title: "Get Print Job",
+      readOnlyHint: true,
+      destructiveHint: false,
+    },
     inputSchema: {
       type: "object" as const,
       properties: {
@@ -169,6 +199,11 @@ const TOOLS = [
     name: "list_print_jobs",
     description:
       "List all print jobs in BizPrint. Returns job details including id, printer, URL, description, status, and creation time.",
+    annotations: {
+      title: "List Print Jobs",
+      readOnlyHint: true,
+      destructiveHint: false,
+    },
     inputSchema: {
       type: "object" as const,
       properties: { ...paginationSchema },
