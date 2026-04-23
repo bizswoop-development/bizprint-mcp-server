@@ -45,12 +45,6 @@ Your API keys are stored securely in your operating system's keychain.
 
 Alternatively, download the `.mcpb` file from [Releases](https://github.com/bizswoop-development/bizprint-mcp-server/releases) and double-click to install.
 
-### From npm
-
-```bash
-npm install -g @bizswoop/bizprint-mcp-server
-```
-
 ### From source
 
 ```bash
@@ -59,6 +53,8 @@ cd bizprint-mcp-server
 npm install
 npm run build
 ```
+
+This produces a compiled server at `build/index.js` that you can reference in your MCP client configuration.
 
 ## Configuration
 
@@ -74,7 +70,7 @@ You can find your API keys in the [BizPrint dashboard](https://print.bizswoop.ap
 
 ### Claude Desktop (Manual)
 
-Add the following to your Claude Desktop configuration file:
+Add the following to your Claude Desktop configuration file, adjusting the path to wherever you cloned the repo:
 
 **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
 **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
@@ -83,8 +79,8 @@ Add the following to your Claude Desktop configuration file:
 {
   "mcpServers": {
     "bizprint": {
-      "command": "npx",
-      "args": ["-y", "@bizswoop/bizprint-mcp-server"],
+      "command": "node",
+      "args": ["/absolute/path/to/bizprint-mcp-server/build/index.js"],
       "env": {
         "BIZPRINT_PUBLIC_KEY": "your-public-key",
         "BIZPRINT_SECRET_KEY": "your-secret-key"
@@ -97,7 +93,7 @@ Add the following to your Claude Desktop configuration file:
 ### Claude Code
 
 ```bash
-claude mcp add bizprint -- npx -y @bizswoop/bizprint-mcp-server \
+claude mcp add bizprint -- node /absolute/path/to/bizprint-mcp-server/build/index.js \
   --env BIZPRINT_PUBLIC_KEY=your-public-key \
   --env BIZPRINT_SECRET_KEY=your-secret-key
 ```
